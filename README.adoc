@@ -2,6 +2,11 @@
 
 Backend used to mint souvenir NFT for participating in the Barcelona DevCentralized workshop (https://github.com/andrzej-casper/pixel-rate[PixelRate application]).
 
+[NOTE]
+====
+Application is configured to run with https://github.com/andrzej-casper/pixel-rate-contract[pixel-rate-contract] deployed in testnet. If you would to change it, please update `CONTRACT_PACKAGE_HASH` and `CONTRACT_OWNER_PUBLIC_KEY` accordingly.
+====
+
 == Requirements
 
 * rust
