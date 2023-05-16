@@ -35,6 +35,7 @@ fn index() -> &'static str {
 pub struct User {
   account_hash: String,
   metadata: String,
+  fingerprint: String,
 }
 
 #[post("/claim-nft", format = "json", data = "<user>")]
@@ -117,7 +118,7 @@ async fn claim_nft(user: Json<User>, state: &State<AppConfig>) -> &'static str {
       return "Unable to register owner.";
     },
     Ok(result) => {
-      println!("Mint call result: {:?}", result.get_result());
+      println!("[Fingerprint: {}] Mint call result: {:?}", user.fingerprint, result.get_result());
     }
   }
 

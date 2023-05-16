@@ -49,7 +49,7 @@ Nothing to see here.
 ----
 $ curl -X POST http://127.0.0.1:8035/claim-nft \
   -H 'Content-Type: application/json' \
-  -d '{"account_hash": "7188948fdc3d97a762fcd62f8b17ef128e5d38d09ce535cc97df3c5931369b90", "metadata": "My custom NFT message!"}'
+  -d '{"account_hash": "7188948fdc3d97a762fcd62f8b17ef128e5d38d09ce535cc97df3c5931369b90", "metadata": "My custom NFT message!", "fingerprint": "n/a"}'
 ----
 
 == Running with Docker
