@@ -21,7 +21,6 @@ $ cargo build
 ----
 $ cp ./env.testnet ./env
 ----
-+
 
 . Run server:
 +
@@ -46,4 +45,27 @@ Nothing to see here.
 $ curl -X POST http://127.0.0.1:8035/claim-nft \
   -H 'Content-Type: application/json' \
   -d '{"account_hash": "7188948fdc3d97a762fcd62f8b17ef128e5d38d09ce535cc97df3c5931369b90", "metadata": "My custom NFT message!"}'
+----
+
+== Running with Docker
+
+. Adjust `.env` configuration:
++
+[source,bash]
+----
+$ cp ./env.testnet ./env
+----
+
+. Place secret key under `./wallet` directory, e.g.:
++
+[source,bash]
+----
+$ cp ~/wallets/07_alice/secret_key.pem ./wallet/secret_key.pem
+----
+
+. Execute run script:
++
+[source,bash]
+----
+$ ./docker_run.sh
 ----
