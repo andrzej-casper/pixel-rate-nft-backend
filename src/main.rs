@@ -18,7 +18,7 @@ use std::path::Path;
 extern crate rocket;
 
 const CONTRACT_PACKAGE_HASH: &str =
-  "e2a6eb73c035bf553f817544c131dacecf79119223dd141a0e20cf44dd6b5e41";
+  "691c5d3789896a66458bbf0decf3ac96e067af0453ccffe7fe295e5b244010b9";
 const CONTRACT_OWNER_PUBLIC_KEY: &str =
   "01e69ae401815ca564277d4d30ba1fb53c6b866e20a153ea9d003d75f3b96a6f62";
 
