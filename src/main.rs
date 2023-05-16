@@ -75,7 +75,7 @@ async fn claim_nft(user: Json<User>, state: &State<AppConfig>) -> &'static str {
     secret_key: &state.secret_key_path,
     timestamp: "",
     ttl: "50s",
-    gas_price: "1000000000",
+    gas_price: "1",
     chain_name: &state.chain,
     dependencies: Vec::new(),
     session_account: CONTRACT_OWNER_PUBLIC_KEY,
