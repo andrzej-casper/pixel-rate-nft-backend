@@ -74,6 +74,8 @@ async fn claim_nft(user: Json<User>, state: &State<AppConfig>) -> &'static str {
     payment_params,
   )
   .await;
+
+  // Handle result.
   if let Err(e) = deploy_result {
     println!("Error while registering owner: {}", e);
     return "Unable to register owner.";
@@ -107,9 +109,16 @@ async fn claim_nft(user: Json<User>, state: &State<AppConfig>) -> &'static str {
     payment_params,
   )
   .await;
-  if let Err(e) = deploy_result {
-    println!("Error while minting token: {}", e);
-    return "Unable to register owner.";
+
+  // Handle result.
+  match deploy_result {
+    Err(e) => {
+      println!("Error while minting token: {}", e);
+      return "Unable to register owner.";
+    },
+    Ok(result) => {
+      println!("Mint call result: {:?}", result.get_result());
+    }
   }
 
   "OK"
