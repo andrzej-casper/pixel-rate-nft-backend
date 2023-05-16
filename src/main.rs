@@ -87,7 +87,7 @@ async fn claim_nft(user: Json<User>, state: &State<AppConfig>) -> &'static str {
     session_args,
     "",
   );
-  let payment_params = PaymentStrParams::with_amount("200000000");
+  let payment_params = PaymentStrParams::with_amount("2000000000");
   let deploy_result = casper_client::put_deploy(
     "",
     &state.node_rpc,
