@@ -10,7 +10,7 @@ COPY ./Cargo.lock ./Cargo.lock
 RUN cargo build --release
 
 # Stage 2
-FROM rust:1.69
+FROM rust:1.69-slim-buster
 
 WORKDIR /app
 
