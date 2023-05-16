@@ -67,5 +67,5 @@ $ cp ~/wallets/07_alice/secret_key.pem ./wallet/secret_key.pem
 +
 [source,bash]
 ----
-$ ./docker_run.sh
+$ ./run_docker.sh
 ----
