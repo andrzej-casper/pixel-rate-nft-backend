@@ -68,7 +68,7 @@ async fn claim_nft(user: Json<User>, state: &State<AppConfig>) -> &'static str {
   let deploy_result = casper_client::put_deploy(
     "",
     &state.node_rpc,
-    3,
+    0,
     deploy_params,
     session_params,
     payment_params,
@@ -101,7 +101,7 @@ async fn claim_nft(user: Json<User>, state: &State<AppConfig>) -> &'static str {
   let deploy_result = casper_client::put_deploy(
     "",
     &state.node_rpc,
-    1,
+    0,
     deploy_params,
     session_params,
     payment_params,
@@ -137,7 +137,7 @@ async fn rocket() -> _ {
   if chain != "casper" && chain != "casper-test" {
     panic!("Invalid chain specified.");
   }
-  casper_client::get_state_root_hash("", node_rpc, 1, "")
+  casper_client::get_state_root_hash("", node_rpc, 0, "")
     .await
     .expect("Node's RPC is not responding.");
 
