@@ -24,7 +24,7 @@ $ cargo build
 +
 [source,bash]
 ----
-$ cp ./env.testnet ./env
+$ cp ./.env.testnet ./.env
 ----
 
 . Run server:
@@ -58,7 +58,7 @@ $ curl -X POST http://127.0.0.1:8035/claim-nft \
 +
 [source,bash]
 ----
-$ cp ./env.testnet ./env
+$ cp ./.env.testnet ./.env
 ----
 
 . Place secret key under `./wallet` directory, e.g.:
