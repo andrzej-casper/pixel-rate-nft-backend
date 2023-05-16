@@ -1,1 +1,49 @@
-# PixelRate backend for souvenir NFT
+= Backend for minting souvenir NFT
+
+Backend used to mint souvenir NFT for participating in the Barcelona DevCentralized workshop (https://github.com/andrzej-casper/pixel-rate[PixelRate application]).
+
+== Requirements
+
+* rust
+
+== Usage
+
+. Compile from sources:
++
+[source,bash]
+----
+$ cargo build
+----
+
+. Adjust `.env` configuration:
++
+[source,bash]
+----
+$ cp ./env.testnet ./env
+----
++
+
+. Run server:
++
+[source,bash]
+----
+$ ROCKET_ADDRESS=0.0.0.0 ROCKET_PORT=8035 cargo run
+----
++
+
+. Optionally you can verify it is running:
++
+[source,bash]
+----
+$ curl http://127.0.0.1:8035/
+Nothing to see here.
+----
+
+. Send minting request:
++
+[source,bash]
+----
+$ curl -X POST http://127.0.0.1:8035/claim-nft \
+  -H 'Content-Type: application/json' \
+  -d '{"account_hash": "7188948fdc3d97a762fcd62f8b17ef128e5d38d09ce535cc97df3c5931369b90", "metadata": "My custom NFT message!"}'
+----
