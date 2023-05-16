@@ -7,6 +7,9 @@ use dotenv::dotenv;
 use rocket::serde::json::Json;
 use rocket::serde::{Deserialize, Serialize};
 use rocket::State;
+use rocket::http::Header;
+use rocket::{Request, Response};
+use rocket::fairing::{Fairing, Info, Kind};
 use std::collections::HashMap;
 use std::env;
 use std::path::Path;
@@ -18,6 +21,25 @@ const CONTRACT_PACKAGE_HASH: &str =
   "e2a6eb73c035bf553f817544c131dacecf79119223dd141a0e20cf44dd6b5e41";
 const CONTRACT_OWNER_PUBLIC_KEY: &str =
   "01e69ae401815ca564277d4d30ba1fb53c6b866e20a153ea9d003d75f3b96a6f62";
+
+pub struct CORS;
+
+#[rocket::async_trait]
+impl Fairing for CORS {
+  fn info(&self) -> Info {
+    Info {
+      name: "Add CORS headers to responses",
+      kind: Kind::Response
+    }
+  }
+
+  async fn on_response<'r>(&self, _request: &'r Request<'_>, response: &mut Response<'r>) {
+    response.set_header(Header::new("Access-Control-Allow-Origin", "*"));
+    response.set_header(Header::new("Access-Control-Allow-Methods", "POST, GET, PATCH, OPTIONS"));
+    response.set_header(Header::new("Access-Control-Allow-Headers", "*"));
+    response.set_header(Header::new("Access-Control-Allow-Credentials", "true"));
+  }
+}
 
 struct AppConfig {
   node_rpc: String,
@@ -160,4 +182,5 @@ async fn rocket() -> _ {
   rocket::build()
     .mount("/", routes![index, claim_nft])
     .manage(app_config)
+    .attach(CORS)
 }
