@@ -1,7 +1,11 @@
 FROM rust:1.69.0
 
 WORKDIR /app
-COPY . .
+
+COPY ./src ./src
+COPY ./.env ./.env
+COPY ./Cargo.toml ./Cargo.toml
+COPY ./Cargo.lock ./Cargo.lock
 
 RUN cargo install --path .
 
